@@ -1,0 +1,8 @@
+fastapi
+google-genai
+jinja2
+pyjwt
+python-dotenv
+python-multipart
+sqlglot
+uvicorn

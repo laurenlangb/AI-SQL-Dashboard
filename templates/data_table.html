@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Data Table</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='styles.css') }}" />
+    <script src="{{ url_for('static', path='data_table.js') }}" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <!-- Header row with the page title and loaded row count. -->
+      <header class="data-table-header">
+        <h1>Available Data</h1>
+        <div class="header-meta">
+          <span class="user-name">{{ user_name }}</span>
+          <form method="post" action="/api/logout" class="logout-form">
+            <button type="submit" class="logout-button">Log out</button>
+          </form>
+        </div>
+      </header>
+
+      <section class="table-section" aria-label="Data table">
+        <div class="table-wrap">
+          <table>
+            <thead id="data-head"></thead>
+            <tbody id="data-body">
+              <tr>
+                <td class="loading-cell">Loading...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="table-summary" id="row-count">Loading</div>
+      </section>
+
+      <section class="chat-section" aria-label="Chat with the data">
+        <h2>Ask About The {{ table.head | title }} Data</h2>
+
+        <div class="chat-history" id="chat-history"></div>
+
+        <form class="chat-form" id="chat-form">
+          <label class="sr-only" for="chat-input">Question</label>
+          <input
+            id="chat-input"
+            name="message"
+            type="text"
+            autocomplete="off"
+          />
+          <button type="submit">Ask</button>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>
